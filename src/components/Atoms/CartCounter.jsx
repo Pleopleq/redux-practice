@@ -1,12 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const CartCounter = () => (
+const CartCounter = ({ cartLength }) => (
     <>
         <li>
-            <button className="button tiny ghost">Carrito: 5</button>
+            <button className="button tiny ghost">{`Carrito: ${cartLength}`}</button>
         </li>
     </>
 )
 
+const mapStateToProps = state => (
+    {
+        cartLength: state.cart.length
+    }
+)
 
-export default CartCounter
+const mapDispatchToProps = () => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartCounter)
